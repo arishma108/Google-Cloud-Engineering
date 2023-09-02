@@ -1,7 +1,7 @@
 ### Managing Deployments Using Kubernetes Engine
 
 ```
-gcloud config set compute/zone us-west4-a
+gcloud config set compute/zone us-east1-d
 ```
 
 ```
@@ -12,7 +12,13 @@ gcloud container clusters create bootcamp \
   --machine-type e2-small \
   --num-nodes 3 \
   --scopes "https://www.googleapis.com/auth/projecthosting,storage-rw"
+```
 
+```
+vi deployments/auth.yaml
+i
+:wq
+cat deployments/auth.yaml
 ```
 
 ```
@@ -24,7 +30,10 @@ kubectl create secret generic tls-certs --from-file tls/
 kubectl create configmap nginx-frontend-conf --from-file=nginx/frontend.conf
 kubectl create -f deployments/frontend.yaml
 kubectl create -f services/frontend.yaml
+```
 
+```
+kubectl get services frontend
 ```
 
 ```
